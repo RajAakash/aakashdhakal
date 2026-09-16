@@ -1,0 +1,57 @@
+.contact-links {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.75rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  position: relative;
+  padding: 0.5rem 0;
+  letter-spacing: 0;
+  transition: color 0.12s linear;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.15s linear;
+}
+
+.contact-links a:hover {
+  color: var(--text);
+}
+
+.contact-links a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .contact-links {
+    gap: 1.5rem;
+  }
+
+  .contact-links a {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-links {
+    gap: 1rem;
+  }
+}

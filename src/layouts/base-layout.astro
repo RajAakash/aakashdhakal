@@ -1,0 +1,105 @@
+---
+import '../styles/global.css';
+
+const { title, description } = Astro.props;
+
+const showBackButton = Astro.url.pathname !== '/';
+
+const siteUrl = 'https://aakashdhakal.com';
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+
+const defaultTitle = 'Aakash Raj Dhakal · HPC & Machine Learning Researcher';
+const defaultDescription =
+  'Doctoral researcher in High-Performance Computing and Machine Learning at Texas State University, collaborating with Lawrence Livermore National Laboratory on HPC performance prediction.';
+
+const pageTitle = title || defaultTitle;
+const pageDescription = description || defaultDescription;
+
+const ogImage = new URL('/og-image.png', siteUrl).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDescription} />
+    <meta name="author" content="Aakash Raj Dhakal" />
+    <meta name="robots" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:site_name" content="Aakash Raj Dhakal - Researcher" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Aakash Raj Dhakal, HPC and Machine Learning Researcher" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Aakash Raj Dhakal, HPC and Machine Learning Researcher" />
+
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aakash Raj Dhakal",
+        "jobTitle": "Doctoral Researcher, High-Performance Computing & Machine Learning",
+        "description": "Doctoral researcher in HPC and Machine Learning at Texas State University, collaborating with Lawrence Livermore National Laboratory",
+        "sameAs": [
+          "https://github.com/RajAakash"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Texas State University"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Tribhuvan University"
+        },
+        "knowsAbout": [
+          "High-Performance Computing",
+          "Machine Learning",
+          "Deep Learning",
+          "Academic Research"
+        ]
+      }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    {
+      showBackButton && (
+        <a href="/" class="back-link fixed" data-cursor="hover" aria-label="Return to home page">
+          Back to Home
+        </a>
+      )
+    }
+
+    <slot />
+  </body>
+</html>

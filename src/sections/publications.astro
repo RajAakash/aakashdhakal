@@ -1,0 +1,59 @@
+---
+const publications = [
+  {
+    title: 'Relative Performance Prediction Using Few-Shot Learning',
+    role: 'First Author',
+    venue: '2024 IEEE COMPSAC',
+    description:
+      'ML models to improve relative performance prediction of HPC systems, applied in collaboration with LLNL to optimize U.S. supercomputing workloads.',
+  },
+  {
+    title: 'xAMM: "Attention" to Details Improves Cross-Platform Prediction Accuracy',
+    role: null,
+    venue: '2025 IEEE CCGRID',
+    description:
+      'Attention-based ML approaches that improved cross-platform prediction accuracy, advancing efficient large-scale HPC resource utilization.',
+  },
+  {
+    title: 'ModelX: Knowledge Transfer Across Heterogeneous Domains',
+    role: null,
+    venue: '2025 ACM HPDC',
+    description:
+      'Domain transfer methods for HPC performance prediction, enabling broader applicability of ML models across supercomputing platforms.',
+  },
+  {
+    title: 'Devnagari Letter Generation Using GAN',
+    role: 'First Author',
+    venue: '2021 Journal of Science and Engineering',
+    description:
+      'A generative adversarial network for Nepali script letter generation — an early foray into generative modeling.',
+  },
+  {
+    title: 'Music from BALA: LSTM, GAN-Based Real-Time Music Generation',
+    role: 'First Author, Preprint',
+    venue: '2021 Preprint',
+    description: 'A neural sequence model (LSTM + GAN) for real-time piano music generation.',
+  },
+];
+---
+
+{
+  publications.map((pub) => (
+    <article class="entry">
+      <h3 class="heading">{pub.title}</h3>
+      <p class="time">
+        {pub.venue}
+        {pub.role ? ` · ${pub.role}` : ''}
+      </p>
+      <p class="muted">{pub.description}</p>
+    </article>
+  ))
+}
+
+<article class="entry">
+  <h3 class="heading" style="font-size: 1rem;">Presentations &amp; Awards</h3>
+  <ul class="impact-list">
+    <li>IEEE CCGRID 2025, Tromsø, Norway — presented research on cross-platform prediction accuracy in HPC systems.</li>
+    <li>IEEE CCGRID Travel Grant, selected among U.S. university students for international conference travel support.</li>
+  </ul>
+</article>

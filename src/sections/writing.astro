@@ -1,0 +1,80 @@
+<div id="writing-list">
+  <article class="entry">
+    <p class="muted">Fetching latest articles…</p>
+  </article>
+</div>
+
+<p id="writing-view-all" style="display:none; margin-top: 0.5rem;">
+  <a href="https://rajdhakal.medium.com/" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
+    View all articles on Medium →
+  </a>
+</p>
+
+<script type="module">
+  // Medium's RSS is remote content — escape it before it goes anywhere near innerHTML.
+  function esc(value) {
+    return String(value ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  async function loadBlogs() {
+    try {
+      const res = await fetch('/api/blogs');
+      if (!res.ok) throw new Error('Failed to fetch blogs');
+
+      const posts = await res.json();
+      const list = document.getElementById('writing-list');
+      const viewAll = document.getElementById('writing-view-all');
+
+      if (!posts || posts.length === 0) {
+        list.innerHTML = `
+          <article class="entry">
+            <p class="muted">No articles published yet.</p>
+          </article>
+        `;
+        return;
+      }
+
+      const visiblePosts = posts.slice(0, 3);
+
+      list.innerHTML = visiblePosts
+        .map((post) => {
+          const date = new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          });
+
+          return `
+            <article class="entry">
+              <h3 class="heading">${esc(post.title)}</h3>
+              <p class="time">${esc(date)}</p>
+              <p class="muted">${esc(post.snippet)}</p>
+              <p>
+                <a href="${esc(post.link)}" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
+                  Read on Medium →
+                </a>
+              </p>
+            </article>
+          `;
+        })
+        .join('');
+
+      if (posts.length > 3) {
+        viewAll.style.display = 'block';
+      }
+    } catch (err) {
+      document.getElementById('writing-list').innerHTML = `
+        <article class="entry">
+          <p class="muted">Couldn't load articles right now — try Medium directly.</p>
+        </article>
+      `;
+    }
+  }
+
+  loadBlogs();
+</script>

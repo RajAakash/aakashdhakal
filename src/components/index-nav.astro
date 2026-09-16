@@ -1,0 +1,100 @@
+---
+const links = [
+  { id: 'home', label: 'Home' },
+  { id: 'research', label: 'Research' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'publications', label: 'Publications' },
+  { id: 'education', label: 'Education' },
+  { id: 'writing', label: 'Writing' },
+];
+---
+
+<header class="masthead" id="main-nav">
+  <div class="masthead-inner">
+    <a href="#home" class="masthead-name" data-cursor="hover">Aakash Raj Dhakal</a>
+
+    <nav class="masthead-links" aria-label="Section navigation">
+      {
+        links.slice(1).map(({ id, label }) => (
+          <a href={`#${id}`} class="masthead-link" data-cursor="hover" data-section={id}>
+            {label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <button
+      type="button"
+      id="nav-toggle"
+      class="nav-toggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Section navigation, mobile">
+    {
+      links.map(({ id, label }) => (
+        <a href={`#${id}`} class="mobile-menu-link" data-cursor="hover" data-section={id}>
+          {label}
+        </a>
+      ))
+    }
+  </nav>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const desktopEntries = document.querySelectorAll('.masthead-link');
+    const mobileEntries = document.querySelectorAll('.mobile-menu-link');
+    const sections = document.querySelectorAll('section[id]');
+
+    function setMenuOpen(open: boolean) {
+      nav?.classList.toggle('menu-open', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+      toggle?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    toggle?.addEventListener('click', () => {
+      setMenuOpen(!nav?.classList.contains('menu-open'));
+    });
+
+    const observer = new IntersectionObserver(
+      (entriesList) => {
+        entriesList.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = entry.target.getAttribute('id');
+          [...desktopEntries, ...mobileEntries].forEach((el) => {
+            el.classList.toggle('active', el.getAttribute('data-section') === id);
+          });
+        });
+      },
+      { root: null, rootMargin: '-100px 0px -66%', threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    [...desktopEntries, ...mobileEntries].forEach((el) => {
+      el.addEventListener('click', (e) => {
+        const targetId = el.getAttribute('href')?.substring(1);
+        const targetSection = document.getElementById(targetId || '');
+
+        if (targetSection) {
+          e.preventDefault();
+          setMenuOpen(false);
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+          history.replaceState(null, '', `#${targetId}`);
+        }
+      });
+    });
+  });
+</script>
