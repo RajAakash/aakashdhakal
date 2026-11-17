@@ -5,7 +5,8 @@ const { title, description } = Astro.props;
 
 const showBackButton = Astro.url.pathname !== '/';
 
-const siteUrl = 'https://aakashdhakal.com';
+// aakashdhakal.com does not resolve; use the live Netlify URL until a domain is set up
+const siteUrl = 'https://aakashdhakal.netlify.app';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 
 const defaultTitle = 'Aakash Raj Dhakal · HPC & Machine Learning Researcher';
@@ -62,7 +63,9 @@ const ogImage = new URL('/og-image.png', siteUrl).href;
         "jobTitle": "Doctoral Researcher, High-Performance Computing & Machine Learning",
         "description": "Doctoral researcher in HPC and Machine Learning at Texas State University, collaborating with Lawrence Livermore National Laboratory",
         "sameAs": [
-          "https://github.com/RajAakash"
+          "https://github.com/RajAakash",
+          "https://www.linkedin.com/in/aakash-dhakal-b94544143/",
+          "https://orcid.org/0009-0006-2997-8434"
         ],
         "worksFor": {
           "@type": "Organization",

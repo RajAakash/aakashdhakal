@@ -1,38 +1,36 @@
 ---
+const ME = 'Aakash Raj Dhakal';
+
 const publications = [
   {
-    title: 'Relative Performance Prediction Using Few-Shot Learning',
-    role: 'First Author',
-    venue: '2024 IEEE COMPSAC',
-    description:
-      'ML models to improve relative performance prediction of HPC systems, applied in collaboration with LLNL to optimize U.S. supercomputing workloads.',
-  },
-  {
+    authors: [ME, 'Tanzima Z. Islam', 'Arunavo Dey', 'Daniel Nichols', 'Abhinav Bhatele', 'Tapasya Patki', 'Tom Scogland', 'Jae-Seung Yeom'],
     title: 'xAMM: "Attention" to Details Improves Cross-Platform Prediction Accuracy',
-    role: null,
-    venue: '2025 IEEE CCGRID',
-    description:
-      'Attention-based ML approaches that improved cross-platform prediction accuracy, advancing efficient large-scale HPC resource utilization.',
+    venue: 'IEEE International Symposium on Cluster, Cloud and Internet Computing (CCGrid), 2025',
+    links: [{ label: 'IEEE', href: 'https://ieeexplore.ieee.org/abstract/document/11044856' }],
   },
   {
-    title: 'ModelX: Knowledge Transfer Across Heterogeneous Domains',
-    role: null,
-    venue: '2025 ACM HPDC',
-    description:
-      'Domain transfer methods for HPC performance prediction, enabling broader applicability of ML models across supercomputing platforms.',
+    authors: ['Arunavo Dey', 'Neil Antony', ME, 'Kowshik Thopalli', 'Jayaraman J. Thiagarajan', 'Tapasya Patki', 'Aniruddha Marathe', 'Tom Scogland', 'Jae-Seung Yeom', 'Tanzima Islam'],
+    title: 'ModelX: A Novel Transfer Learning Approach Across Heterogeneous Datasets',
+    venue: 'ACM International Symposium on High-Performance Parallel and Distributed Computing (HPDC), 2025',
+    links: [{ label: 'ACM', href: 'https://dl.acm.org/doi/10.1145/3731545.3731593' }],
   },
   {
-    title: 'Devnagari Letter Generation Using GAN',
-    role: 'First Author',
-    venue: '2021 Journal of Science and Engineering',
-    description:
-      'A generative adversarial network for Nepali script letter generation — an early foray into generative modeling.',
+    authors: ['Arunavo Dey', ME, 'Tanzima Z. Islam', 'Jae-Seung Yeom', 'Tapasya Patki', 'Daniel Nichols', 'Alexander Movsesyan', 'Abhinav Bhatele'],
+    title: 'Relative Performance Prediction Using Few-Shot Learning',
+    venue: 'IEEE Computers, Software, and Applications Conference (COMPSAC), 2024',
+    links: [{ label: 'IEEE', href: 'https://ieeexplore.ieee.org/abstract/document/10633344' }],
   },
   {
+    authors: ['Basant Babu Bhandari', ME, 'Laxman Maharjan', 'Asmin Karki'],
+    title: 'Nepali Handwritten Letter Generation using GAN',
+    venue: 'Journal of Science and Engineering, vol. 9, 2021',
+    links: [{ label: 'PDF', href: 'https://nepjol.info/index.php/jsce/article/view/46308' }],
+  },
+  {
+    authors: [ME, 'et al.'],
     title: 'Music from BALA: LSTM, GAN-Based Real-Time Music Generation',
-    role: 'First Author, Preprint',
-    venue: '2021 Preprint',
-    description: 'A neural sequence model (LSTM + GAN) for real-time piano music generation.',
+    venue: 'Preprint, 2021',
+    links: [{ label: 'PDF', href: 'http://elibrary.khwopa.edu.np/handle/123456789/440' }],
   },
 ];
 ---
@@ -41,19 +39,33 @@ const publications = [
   publications.map((pub) => (
     <article class="entry">
       <h3 class="heading">{pub.title}</h3>
-      <p class="time">
-        {pub.venue}
-        {pub.role ? ` · ${pub.role}` : ''}
+      <p>
+        {pub.authors.map((name, i) => (
+          <>
+            {name === ME ? <strong>{name}</strong> : name}
+            {i < pub.authors.length - 1 ? ', ' : ''}
+          </>
+        ))}
       </p>
-      <p class="muted">{pub.description}</p>
+      <p class="time">
+        <em>{pub.venue}</em>
+        {pub.links.map((link) => (
+          <>
+            {' · '}
+            <a href={link.href} target="_blank" rel="noopener noreferrer" data-cursor="hover">[{link.label}]</a>
+          </>
+        ))}
+      </p>
     </article>
   ))
 }
 
 <article class="entry">
-  <h3 class="heading" style="font-size: 1rem;">Presentations &amp; Awards</h3>
+  <h3 class="heading" style="font-size: 1rem;">Talks, Awards and Service</h3>
   <ul class="impact-list">
-    <li>IEEE CCGRID 2025, Tromsø, Norway — presented research on cross-platform prediction accuracy in HPC systems.</li>
-    <li>IEEE CCGRID Travel Grant, selected among U.S. university students for international conference travel support.</li>
+    <li>Talk: xAMM, at IEEE CCGrid 2025 in Tromsø, Norway.</li>
+    <li>Travel grant, IEEE CCGrid 2025.</li>
+    <li>Sub-reviewer: IEEE IPDPS 2025 (2 papers), ACM KDD 2025 (2 papers).</li>
+    <li>Graduate Representative, Nepalese Students Association, Texas State University.</li>
   </ul>
 </article>

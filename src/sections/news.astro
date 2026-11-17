@@ -1,0 +1,18 @@
+---
+const news = [
+  { date: 'May 2025', text: 'Started a second internship at LLNL as a Computing Scholar.' },
+  { date: 'May 2025', text: 'Presented xAMM at IEEE CCGrid 2025 in Tromsø, Norway, with a conference travel grant.' },
+  { date: '2025', text: 'ModelX accepted at ACM HPDC 2025.' },
+  { date: 'May 2024', text: 'Started a Data Science Summer Internship at LLNL.' },
+  { date: '2024', text: 'Few-shot performance prediction paper published at IEEE COMPSAC 2024.' },
+  { date: 'Aug 2023', text: 'Started the Ph.D. in Computer Science at Texas State University.' },
+];
+---
+
+<article class="entry">
+  <ul class="impact-list">
+    {news.map((item) => (
+      <li><strong>{item.date}</strong>: {item.text}</li>
+    ))}
+  </ul>
+</article>

@@ -1,18 +1,28 @@
 <article class="entry">
-  <h3 class="heading">HPC Job Copilot — Natural Language to SLURM/PBS Job Submission</h3>
-  <p class="time">Python · NLP · Click · Pydantic · SLURM · PBS</p>
+  <h3 class="heading">Cross-platform runtime prediction server</h3>
+  <p class="time">Python · FastAPI · TensorFlow · SLURM/PBS</p>
 
   <p>
-    A command-line copilot that converts natural-language job requests into SLURM/PBS commands, so
-    new HPC users don't have to learn scheduler syntax before they can run anything.
+    A neural network trained on HPC job runtimes, served over HTTP. Users send a job
+    configuration (machine, app, ranks, nodes, threads) and get back a predicted runtime and a
+    scheduling suggestion, without needing the model or the training data locally.
   </p>
 
-  <ul class="impact-list">
-    <li>Reduced submission complexity by 70% for new HPC users.</li>
-    <li>Implemented YAML-based policy enforcement to prevent misconfigured jobs, cutting job submission errors by 40%.</li>
-    <li>Added a dry-run mode and an error-explanation module, cutting troubleshooting time by 30%.</li>
-    <li>Designed a modular architecture supporting two schedulers (SLURM, PBS) with room for LLM integration.</li>
-  </ul>
+  <p>
+    <a href="https://github.com/RajAakash/MCP_server" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
+      View source →
+    </a>
+  </p>
+</article>
+
+<article class="entry">
+  <h3 class="heading">HPC Job Copilot</h3>
+  <p class="time">Python · Click · Pydantic · SLURM · PBS</p>
+
+  <p>
+    A command-line tool that turns plain-English job requests into SLURM or PBS scripts. It
+    checks jobs against YAML policies, has a dry-run mode, and explains why a submission failed.
+  </p>
 
   <p>
     <a href="https://github.com/RajAakash/HPC_job_copilot" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
@@ -22,61 +32,26 @@
 </article>
 
 <article class="entry">
-  <h3 class="heading">ECG Image Data Classification and Reconstruction Using Transformers</h3>
-  <p class="time">Python · PyTorch · Transformers · Time Series Forecasting</p>
+  <h3 class="heading">HPC failure prediction on LANL data</h3>
+  <p class="time">Python · Jupyter</p>
+
+  <p>A failure prediction model for HPC systems, built on LANL's released failure data (1996–2005).</p>
 
   <p>
-    A Transformer-based deep learning model that classifies ECG image data, with an activation
-    function reconstruction module added for interpretability on time-series signals.
-  </p>
-
-  <ul class="impact-list">
-    <li>Designed and implemented a Transformer-based classifier for ECG image data.</li>
-    <li>Integrated a reconstruction module to improve interpretability and robustness for time-series data.</li>
-    <li>Reduced inference time by 15% compared to baseline CNN approaches.</li>
-  </ul>
-
-  <p>
-    <a href="https://github.com/RajAakash/DSSI_ChallengeTransformer" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
+    <a href="https://github.com/RajAakash/HPC_Failure_Detection_LANL" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
       View source →
     </a>
   </p>
 </article>
 
 <article class="entry">
-  <h3 class="heading">Emotion Detection on MELD</h3>
-  <p class="time">Transformers · OpenCV · LSTM · Multimodal</p>
+  <h3 class="heading">Question answering with RAG</h3>
+  <p class="time">Python · LangChain · WikiQA</p>
 
   <p>
-    A multimodal emotion recognition system on the MELD dataset, combining audio, video, and text
-    signals rather than relying on any single modality.
+    A retrieval-augmented QA system on WikiQA. Tuning the retrieval step raised answer precision
+    by 5%.
   </p>
-
-  <ul class="impact-list">
-    <li>Combined Transformers for textual features, LSTMs for temporal sequences, and OpenCV for facial expression extraction.</li>
-    <li>Reached roughly 67% classification accuracy across the combined modalities.</li>
-  </ul>
-
-  <p>
-    <a href="https://github.com/RajAakash/MELD-Emotion-Recognition" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">
-      View source →
-    </a>
-  </p>
-</article>
-
-<article class="entry">
-  <h3 class="heading">RAG for Question Answering</h3>
-  <p class="time">RAG · Python · WikiQA · LangChain</p>
-
-  <p>
-    A retrieval-augmented generation chatbot that answers fact-based questions from the WikiQA
-    dataset, built to see how far retrieval quality alone could push answer precision.
-  </p>
-
-  <ul class="impact-list">
-    <li>Built a document retrieval pipeline paired with transformer-based answer generation.</li>
-    <li>Improved precision of generated answers by 5% by fine-tuning retrieval parameters and transformer layers.</li>
-  </ul>
 
   <p>
     <a href="https://github.com/RajAakash/RAG_QuestionAnswering" target="_blank" rel="noopener noreferrer" data-cursor="hover" class="read-more-link">

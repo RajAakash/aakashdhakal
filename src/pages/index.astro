@@ -8,6 +8,7 @@ import Projects from '../sections/projects.astro';
 import Publications from '../sections/publications.astro';
 import Writing from '../sections/writing.astro';
 import Education from '../sections/education.astro';
+import News from '../sections/news.astro';
 ---
 
 <BaseLayout
@@ -21,14 +22,13 @@ import Education from '../sections/education.astro';
       <div class="intro-panel">
         <h1 class="heading heading-hero">Aakash Raj Dhakal</h1>
 
-        <p class="subheading">Doctoral Researcher, HPC & Machine Learning · Texas State University</p>
+        <p class="subheading">Ph.D. Candidate in Computer Science · Texas State University</p>
 
         <p class="intro-text">
-          I spend most of my time asking why a system behaves the way it does before I try to make it
-          behave differently. My research predicts and explains performance on national-scale
-          supercomputers, in collaboration with Lawrence Livermore National Laboratory, and I've
-          carried that same habit of reading deeply and testing assumptions into generative models,
-          transformers, and a few things I built just to understand them better.
+          I'm a Ph.D. candidate at Texas State University, advised by Dr. Tanzima Islam. I work on
+          machine learning for HPC: predicting how an application will perform on a supercomputer
+          it has never run on. I've spent two summers at Lawrence Livermore National Laboratory
+          working on this, and my work has appeared at CCGrid, HPDC and COMPSAC.
         </p>
 
         <div class="hero-cta">
@@ -62,10 +62,18 @@ import Education from '../sections/education.astro';
 
     <div class="divider" aria-hidden="true"></div>
 
+    <section id="news">
+      <header class="section-header">
+        <h2 class="heading heading-section">News</h2>
+      </header>
+      <News />
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
     <section id="research">
       <header class="section-header">
         <h2 class="heading heading-section">Research</h2>
-        <p class="subheading">Performance prediction for national-scale HPC systems, with LLNL</p>
       </header>
       <Research />
     </section>
@@ -75,7 +83,6 @@ import Education from '../sections/education.astro';
     <section id="experience">
       <header class="section-header">
         <h2 class="heading heading-section">Experience</h2>
-        <p class="subheading">From national labs to production procurement systems</p>
       </header>
       <Experience />
     </section>
@@ -85,7 +92,6 @@ import Education from '../sections/education.astro';
     <section id="projects">
       <header class="section-header">
         <h2 class="heading heading-section">Projects</h2>
-        <p class="subheading">Built to understand a method, not just to ship it</p>
       </header>
       <Projects />
     </section>
@@ -95,7 +101,6 @@ import Education from '../sections/education.astro';
     <section id="publications">
       <header class="section-header">
         <h2 class="heading heading-section">Publications</h2>
-        <p class="subheading">Peer-reviewed work in IEEE and ACM venues</p>
       </header>
       <Publications />
     </section>
@@ -122,8 +127,7 @@ import Education from '../sections/education.astro';
 
   <footer class="site-footer">
     <p class="footer-note">
-      Always glad to talk shop on HPC, machine learning, or a paper you think I should read —
-      write to <a href="mailto:aakashrajdhakal@gmail.com" data-cursor="hover">aakashrajdhakal@gmail.com</a>.
+      Happy to talk about HPC, machine learning, or a paper you think I should read. Email me at <a href="mailto:aakashrajdhakal@gmail.com" data-cursor="hover">aakashrajdhakal@gmail.com</a>.
     </p>
 
     <div class="footer-meta">
